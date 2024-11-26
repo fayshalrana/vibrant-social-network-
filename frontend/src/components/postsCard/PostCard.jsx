@@ -57,10 +57,10 @@ const PostCard = ({ post }) => {
 
     return (
         <article className="bg-white p-6 mb-6 shadow transition duration-300 group border">
-            <div className="relative mb-4 rounded-2xl">
+            <div className="relative mb-4 rounded-2xl overflow-hidden">
                 <img
-                    className="max-h-80 rounded-2xl w-full object-cover transition-transform duration-300 transform group-hover:scale-105"
-                    src="https://images.pexels.com/photos/163097/twitter-social-media-communication-internet-network-163097.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    className="rounded-2xl w-full object-cover transition-transform duration-300 transform group-hover:scale-105"
+                    src={post.imageUrl.url}
                     alt=""
                 />
                 <div className="absolute bottom-3 left-3 inline-flex items-center rounded-lg bg-white p-2 shadow-md">
@@ -75,20 +75,21 @@ const PostCard = ({ post }) => {
                     <div className="pr-3">
                         <img
                             className="h-12 w-12 rounded-full object-cover"
-                            src="https://images.pexels.com/photos/163097/twitter-social-media-communication-internet-network-163097.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                            src={post.imageUrl.url}
                             alt=""
                         />
                     </div>
                     <div className="flex flex-1">
                         <div className="flex flex-col items-start">
-                            <p className="text-sm font-semibold capitalize">{post.owner.name}</p>
+                            <p className="text-sm font-semibold capitalize">{post.owner?.name || "Unknown"}</p>
                             <p className="text-sm text-gray-500">Published on 19/03/2024</p>
                         </div>
+
                     </div>
                 </div>
                 <div className="flex justify-end">
                     <div className="text-sm flex items-center text-gray-500">
-                    {<CreatedTime createdAt={post.createdAt} />}
+                        {<CreatedTime createdAt={post.createdAt} />}
                         <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
@@ -127,28 +128,28 @@ const PostCard = ({ post }) => {
                             <button type='submit' className="btn btn-outline btn-info">Info</button>
                         </form>
                         <div className="mt-2 flex flex-col gap-2">
-                           {
-                            post.comments.map(item =>(
-                                <div key={item._id} role="button"
-                                className="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-                                <div className="grid mr-4 place-items-center">
-                                    <img alt="emma" src="https://docs.material-tailwind.com/img/face-3.jpg"
-                                        className="relative inline-block h-12 w-12 !rounded-full  object-cover object-center" />
-                                </div>
-                                <div>
-                                    <h6
-                                        className="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900">
-                                       {item.user.name}
-                                    </h6>
-                                    <p className="block font-sans text-sm antialiased font-normal leading-normal text-gray-700">
-                                      {
-                                        item.comment
-                                      }
-                                    </p>
-                                </div>
-                            </div>
-                            ))
-                           }
+                            {
+                                post.comments.map(item => (
+                                    <div key={item._id} role="button"
+                                        className="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                                        <div className="grid mr-4 place-items-center">
+                                            <img alt="emma" src="https://docs.material-tailwind.com/img/face-3.jpg"
+                                                className="relative inline-block h-12 w-12 !rounded-full  object-cover object-center" />
+                                        </div>
+                                        <div>
+                                            <h6
+                                                className="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900">
+                                                {item.user.name}
+                                            </h6>
+                                            <p className="block font-sans text-sm antialiased font-normal leading-normal text-gray-700">
+                                                {
+                                                    item.comment
+                                                }
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>

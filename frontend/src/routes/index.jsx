@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import { useEffect } from "react";
 import Profile from "../pages/Profile";
+import CreatePost from "../pages/CreatePost";
 // import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/create-post",
+        element: <CreatePost />,
       },
       {
         path: "/profile",

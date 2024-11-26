@@ -23,17 +23,13 @@ const Profile = () => {
   }
   return (
     <div>
-      <div className="h-[300px] w-full" style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1624396963238-df0e48367ff7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvdmVyJTIwcGhvdG98ZW58MHx8MHx8fDA%3D')", backgroundRepeat: "no-repeat", backgroundSize: 'cover', backgroundAttachment:'fixed',
-      }}></div>
-      <div className="grid grid-cols-4 h-full bg-transparent">
+      <div className="grid grid-cols-4 bg-transparent mt-4">
         <div className="container mx-auto">
           <div className="w-full sticky top-[30px]">
             <div className="bg-white rounded-lg shadow-lg text-center overflow-hidden">
               <img className="w-full h-64 object-cover" src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww" alt="Profile Image" />
               <div className="p-6">
-                <h2 className="font-bold text-xl text-gray-800">{currentUser.name}</h2>
+              <h2 className="font-bold text-xl text-gray-800">{currentUser?.name || "Unknown"}</h2>
                 <p className="text-gray-500">@johndoedesigner</p>
                 <p className="text-sm text-gray-600 mt-4 mb-6">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
                 <div className="grid grid-cols-3 gap-4">

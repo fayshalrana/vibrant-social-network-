@@ -17,8 +17,8 @@ const Navbar = () => {
         <Link to={"/"} className='text-2xl text-black'>{
           path == "/" ? <IoHome /> : <IoHomeOutline />
         }</Link>
-        <Link to={"/create"} className='text-2xl text-black'>{
-          path == "/create" ? <FaPlus /> : < AiOutlinePlus />
+        <Link to={"/create-post"} className='text-2xl text-black'>{
+          path == "/create-post" ? <FaPlus /> : < AiOutlinePlus />
         }</Link>
         <Link to={"/search"} className='text-2xl text-black'>{
           path == "/search" ? <FaSearch /> : <CiSearch />

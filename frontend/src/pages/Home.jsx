@@ -7,16 +7,16 @@ import { getAllUsers, getFollowingUserPosts } from '../Actions/User'
 
 const Home = () => {
   const dispatch = useDispatch();
-  const {posts, loading, error}= useSelector((state)=> state.postOfFollowingUsers)
+  const { posts, loading, error } = useSelector((state) => state.postOfFollowingUsers)
 
-  const {users}= useSelector((state)=> state.allUsers)
+  const { users } = useSelector((state) => state.allUsers)
 
 
   useEffect(() => {
     dispatch(getFollowingUserPosts())
     dispatch(getAllUsers())
   }, [dispatch])
-
+  console.log(posts)
 
   return (
     <div className="content grid grid-cols-4 grid-rows-5 gap-4 w-full">
@@ -24,11 +24,11 @@ const Home = () => {
       {/* User posts  */}
       <div className="post col-span-3 pt-5 overflow-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3 text-center px-2 w-[700px] mx-auto">
-        {
-          posts && posts.length > 0 ? posts.map((post)=>(
-            <PostCard key={post._id} post={post}/>
-          )) : <h2>Post not found</h2>
-        }
+          {
+            posts && posts.length > 0 ? posts.map((post) => (
+              <PostCard key={post._id} post={post} />
+            )) : <h2>Post not found</h2>
+          }
         </div>
       </div>
 
@@ -38,11 +38,11 @@ const Home = () => {
         <div className="relative flex flex-col text-gray-700 bg-white shadow-md w-full rounded-xl bg-clip-border">
           <nav className="flex min-w-full flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
             {
-              users && users.length > 0 ? users.map((user)=>(
-                
-                <List key={user._id} user={user}/>
+              users && users.length > 0 ? users.map((user) => (
 
-              )): <h4>There are now user yet</h4>
+                <List key={user._id} user={user} />
+
+              )) : <h4>There are now user yet</h4>
             }
           </nav>
         </div>
